@@ -19,10 +19,11 @@ if __name__ == "__main__":
             level=int(sys.argv[4])
     except(IndexError):
         print "You must supply an an infile and an outfile."
-        print "Example: bbp.py [all|bp|wt|mds] bluebutton_infile.txt bluebutton_outfile.json "
+        print "Example: bbp.py [all|bp|wt|mds|green] bluebutton_infile.txt bluebutton_outfile.json [level]"
         exit(1)
 
     try:
+        print 'about to parse'
         items = simple_parse(infile, outfile)
 
         if outtype=="green":
@@ -46,7 +47,6 @@ if __name__ == "__main__":
         if outtype=="d":
             demodict = build_simple_demographics_readings(items)
             print tojson(demodict)
-
 
     except():
         print "An unexpected error occured. Here is the post-mortem:"
