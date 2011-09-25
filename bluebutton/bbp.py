@@ -23,7 +23,6 @@ if __name__ == "__main__":
         exit(1)
 
     try:
-        print 'about to parse'
         items = simple_parse(infile, outfile)
 
         if outtype=="green":

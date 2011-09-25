@@ -13,7 +13,7 @@ sections={
     "MY HEALTHEVET PERSONAL HEALTH INFORMATION":
     [
         None,
-        None,
+        ['Name'],
         None,
         ['Date of Birth']
     ],
