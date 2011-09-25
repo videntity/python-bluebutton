@@ -153,7 +153,6 @@ def age(dob):
     else:
         return today.year - dob.year
 
-
 def simple_parse(inPath, OutPath):
     outfile =open(OutPath, 'w')
     line=[]
@@ -161,20 +160,20 @@ def simple_parse(inPath, OutPath):
     generic_dict={}
     with open(inPath, 'r') as f:
         for i, l in enumerate(f):
-            generic_dict={}
-            line=l.split(":")
-            if len(line)>1:
-                k=line[0]
-                v=line[1]
-                if v[0]==" ":
-                    v=v.lstrip()
-                    if len(line)>2 and k=="Time":
-                        v="%s:%s" % (line[1], line[2])
-                        v=v.rstrip()
-                        generic_dict[k]=v
-                        items.append(generic_dict)
-                        f.close()
-                        return items
+           generic_dict={}
+           line=l.split(":")
+           if len(line)>1:
+               k=line[0]
+               v=line[1]
+               if v[0]==" ":
+                   v=v.lstrip()
+               if len(line)>2 and k=="Time":
+                   v="%s:%s" % (line[1], line[2])
+               v=v.rstrip()
+               generic_dict[k]=v
+               items.append(generic_dict)
+    f.close()
+    return items
 
 def green_parse(inPath, outPath, level):
     import re
@@ -192,33 +191,25 @@ def green_parse(inPath, outPath, level):
             #This is where we start a new major section of the document
             # we need to reset our set of restricted subsection according to level
             if(group_name and group_name.group(1) in sections.keys()):
-                #print 'opening group '+group_name.group(1)
                 open_section=group_name.group(1)
                 restricted_subsections = []
                 for i in range(0,level+1):
                     if sections[open_section][i]:
                         for restriction in sections[open_section][i]:
                             restricted_subsections.append(restriction)
-                    #print 'appending %s ' % sections[open_section][i]
-
-                #print 'matched on group_name '+open_section+' - Opening section'
-                #print restricted_subsections
             subsection = RE_SUBSECTION.match(l)
-            if(
-                (
-                        subsection
-                        and
-                        restricted_subsections
-                        and
-                        subsection.group(1) in restricted_subsections
-                    )
-                    or
-                    'all' in restricted_subsections
-                ):
+            if( (   subsection
+                    and
+                    restricted_subsections
+                    and
+                    subsection.group(1) in restricted_subsections
+                )
+                or
+                'all' in restricted_subsections
+            ):
                 #print 'subsection '+subsection.group(1)+' will not be kept'
                 continue
             outfile.write(l)
-
     outfile.close()
 
 def build_bp_readings(items):
