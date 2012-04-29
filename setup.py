@@ -67,7 +67,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'bdist_wininst':
 
 
 setup(name="python-bluebutton",
-      version="0.0.2",
+      version="0.1.3",
       description="BlueButton Format Parser",
       long_description="""BlueButton Parser: Tools for parsing the VA's Blue Button 
 file format and converting it it python objects and or JSON""",
