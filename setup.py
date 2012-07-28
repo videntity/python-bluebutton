@@ -67,14 +67,14 @@ if len(sys.argv) > 1 and sys.argv[1] == 'bdist_wininst':
 
 
 setup(name="python-bluebutton",
-      version="0.1.3",
+      version="0.1.4",
       description="BlueButton Format Parser",
       long_description="""BlueButton Parser: Tools for parsing the VA's Blue Button 
 file format and converting it it python objects and or JSON""",
       author="Alan Viars",
       author_email="aviars@videntity.com",
-      url="http://gitbub.com/aviars/python-bluebutton",
-      download_url="http://github.com/aviars/python-bluebutton/tarball/master",
+      url="https://gitbub.com/videntity/python-bluebutton",
+      download_url="https://github.com/videntity/python-bluebutton/tarball/master",
       packages=packages,
       scripts=['bluebutton/bbp.py',
                ]
